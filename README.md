@@ -8,7 +8,7 @@
 
 There are two version **non-local.py** and **non-local-simple-version.py**. 
 
-- **non-local.py** contains the implementation of Gaussian, embedded Gaussian and  dot product,
+- **non-local.py** contains the implementation of Gaussian, embedded Gaussian and  dot product, which is mainly for learning.
 - **non-local-simple-version.py** only contains  the implementation of embedded Gaussian.
 
 ## Environment
