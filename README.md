@@ -19,4 +19,4 @@ There are two version **non-local.py** and **non-local-simple-version.py**.
 - Experiments on Kinetics dataset.
 - Experiments on Charades dataset.
 - Experiments on COCO dataset.
-- Make sure how to do the Implementation of concatenation.
+- [x] Make sure how to do the Implementation of concatenation.

@@ -57,8 +57,9 @@ class _NonLocalBlockND(nn.Module):
 
         self.theta = None
         self.phi = None
+        self.concat_project = None
 
-        if mode in ['embedded_gaussian', 'dot_product']:
+        if mode in ['embedded_gaussian', 'dot_product', 'concatenation']:
             self.theta = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
                                  kernel_size=1, stride=1, padding=0)
             self.phi = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
@@ -66,13 +67,16 @@ class _NonLocalBlockND(nn.Module):
 
             if mode == 'embedded_gaussian':
                 self.operation_function = self._embedded_gaussian
-            else:
+            elif mode == 'dot_product':
                 self.operation_function = self._dot_product
-
+            elif mode == 'concatenation':
+                self.operation_function = self._concatenation
+                self.concat_project = nn.Sequential(
+                    nn.Conv2d(self.inter_channels * 2, 1, 1, 1, 0, bias=False),
+                    nn.ReLU()
+                )
         elif mode == 'gaussian':
             self.operation_function = self._gaussian
-        else:
-            raise NotImplementedError('Mode concatenation has not been implemented.')
 
         if sub_sample:
             self.g = nn.Sequential(self.g, max_pool(kernel_size=2))
@@ -160,6 +164,38 @@ class _NonLocalBlockND(nn.Module):
 
         return z
 
+    def _concatenation(self, x):
+        batch_size = x.size(0)
+
+        g_x = self.g(x).view(batch_size, self.inter_channels, -1)
+        g_x = g_x.permute(0, 2, 1)
+
+        # (b, c, N, 1)
+        theta_x = self.theta(x).view(batch_size, self.inter_channels, -1, 1)
+        # (b, c, 1, N)
+        phi_x = self.phi(x).view(batch_size, self.inter_channels, 1, -1)
+
+        h = theta_x.size(2)
+        w = phi_x.size(3)
+        theta_x = theta_x.repeat(1, 1, 1, w)
+        phi_x = phi_x.repeat(1, 1, h, 1)
+
+        concat_feature = torch.cat([theta_x, phi_x], dim=1)
+        f = self.concat_project(concat_feature)
+        b, _, h, w = f.size()
+        f = f.view(b, h, w)
+
+        N = f.size(-1)
+        f_div_C = f / N
+
+        y = torch.matmul(f_div_C, g_x)
+        y = y.permute(0, 2, 1).contiguous()
+        y = y.view(batch_size, self.inter_channels, *x.size()[2:])
+        W_y = self.W(y)
+        z = W_y + x
+
+        return z
+
 
 class NONLocalBlock1D(_NonLocalBlockND):
     def __init__(self, in_channels, inter_channels=None, mode='embedded_gaussian', sub_sample=True, bn_layer=True):
@@ -191,7 +227,8 @@ class NONLocalBlock3D(_NonLocalBlockND):
 if __name__ == '__main__':
     from torch.autograd import Variable
 
-    mode_list = ['embedded_gaussian', 'gaussian', 'dot_product', ]
+    mode_list = ['concatenation', 'embedded_gaussian', 'gaussian', 'dot_product', ]
+    # mode_list = ['concatenation']
 
     for mode in mode_list:
         print(mode)
@@ -200,7 +237,7 @@ if __name__ == '__main__':
         out = net(img)
         print(out.size())
 
-        img = Variable(torch.zeros(2, 4, 5, 3))
+        img = Variable(torch.zeros(2, 4, 10, 10))
         net = NONLocalBlock2D(4, mode=mode, sub_sample=False, bn_layer=False)
         out = net(img)
         print(out.size())
