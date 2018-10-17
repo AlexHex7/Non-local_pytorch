@@ -22,4 +22,4 @@ There are two version **non-local.py** and **non-local-simple-version.py**.
 - Experiments on COCO dataset.
 - [x] Make sure how to do the Implementation of concatenation.
 - [x] Support multi-gpu.
-- [x] Fix the bug in **lib/non_local.py** when using multi-gpu.
+- [x] Fix the bug in **lib/non_local.py** when using multi-gpu (thanks for someone share the reason (you can find in [here](https://github.com/pytorch/pytorch/issues/8637))).
