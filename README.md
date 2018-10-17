@@ -4,6 +4,7 @@
 ## Statement
 - Only do the experiments on MNIST dataset so far.
 - You can find the non-local block in **lib/**. 
+- The code can support **multi-gpu** now.
 - If there is something wrong in my code, please contact me, thanks!
 
 There are two version **non-local.py** and **non-local-simple-version.py**. 
@@ -20,3 +21,5 @@ There are two version **non-local.py** and **non-local-simple-version.py**.
 - Experiments on Charades dataset.
 - Experiments on COCO dataset.
 - [x] Make sure how to do the Implementation of concatenation.
+- [x] Support multi-gpu.
+- [x] Fix the bug in **lib/non_local.py** when using multi-gpu.

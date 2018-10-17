@@ -59,24 +59,36 @@ class _NonLocalBlockND(nn.Module):
         self.phi = None
         self.concat_project = None
 
-        if mode in ['embedded_gaussian', 'dot_product', 'concatenation']:
-            self.theta = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
-                                 kernel_size=1, stride=1, padding=0)
-            self.phi = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
-                               kernel_size=1, stride=1, padding=0)
+        # if mode in ['embedded_gaussian', 'dot_product', 'concatenation']:
+        self.theta = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
+                             kernel_size=1, stride=1, padding=0)
 
-            if mode == 'embedded_gaussian':
-                self.operation_function = self._embedded_gaussian
-            elif mode == 'dot_product':
-                self.operation_function = self._dot_product
-            elif mode == 'concatenation':
-                self.operation_function = self._concatenation
-                self.concat_project = nn.Sequential(
-                    nn.Conv2d(self.inter_channels * 2, 1, 1, 1, 0, bias=False),
-                    nn.ReLU()
-                )
-        elif mode == 'gaussian':
-            self.operation_function = self._gaussian
+        self.phi = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
+                           kernel_size=1, stride=1, padding=0)
+        #       elif mode == 'concatenation':
+        self.concat_project = nn.Sequential(
+            nn.Conv2d(self.inter_channels * 2, 1, 1, 1, 0, bias=False),
+            nn.ReLU()
+        )
+
+        # if mode in ['embedded_gaussian', 'dot_product', 'concatenation']:
+        #     self.theta = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
+        #                          kernel_size=1, stride=1, padding=0)
+        #     self.phi = conv_nd(in_channels=self.in_channels, out_channels=self.inter_channels,
+        #                        kernel_size=1, stride=1, padding=0)
+        #
+        #     if mode == 'embedded_gaussian':
+        #         self.operation_function = self._embedded_gaussian
+        #     elif mode == 'dot_product':
+        #         self.operation_function = self._dot_product
+        #     elif mode == 'concatenation':
+        #         self.operation_function = self._concatenation
+        #         self.concat_project = nn.Sequential(
+        #             nn.Conv2d(self.inter_channels * 2, 1, 1, 1, 0, bias=False),
+        #             nn.ReLU()
+        #         )
+        # elif mode == 'gaussian':
+        #     self.operation_function = self._gaussian
 
         if sub_sample:
             self.g = nn.Sequential(self.g, max_pool(kernel_size=2))
@@ -91,7 +103,15 @@ class _NonLocalBlockND(nn.Module):
         :return:
         '''
 
-        output = self.operation_function(x)
+        if self.mode == 'embedded_gaussian':
+            output = self._embedded_gaussian(x)
+        elif mode == 'dot_product':
+            output = self._dot_product(x)
+        elif mode == 'concatenation':
+            output = self._concatenation(x)
+        elif mode == 'gaussian':
+            output = self._gaussian(x)
+
         return output
 
     def _embedded_gaussian(self, x):

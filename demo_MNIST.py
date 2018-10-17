@@ -32,6 +32,7 @@ test_batch_num = len(test_loader)
 
 net = Network()
 if torch.cuda.is_available():
+    net = nn.DataParallel(net)
     net.cuda()
 
 opt = torch.optim.Adam(net.parameters(), lr=cfg.LR, weight_decay=cfg.weight_decay)
