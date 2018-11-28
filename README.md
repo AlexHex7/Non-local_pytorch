@@ -10,17 +10,19 @@ in **lib/network.py**.
 
 ## Environment
 - python 3.6
-- pytorch 0.3.0
+- pytorch 0.4.1
 
 ## Update Records
 1. Figure out how to implement the **concatenation** type, and add the code to **lib/**.
 2. Fix the bug in **lib/non_local.py** (old version) when using multi-gpu. Someone shares the 
 reason with me, and you can find it in [here](https://github.com/pytorch/pytorch/issues/8637).
-3. Fix the bug of 3D pooling in **lib/non_local.py** (old version). Appreciate 
+3. Fix the error of 3D pooling in **lib/non_local.py** (old version). Appreciate 
 [**protein27**](https://github.com/AlexHex7/Non-local_pytorch/issues/17) for pointing it out.
 4. For convenience, I split the **lib/non_local.py** into four python files, and move the 
 old versions (**lib/non_loca.py** and **lib/non_local_simple_version.py**) into 
 **lib/backup/**.
+5. modify the code to support pytorch 0.4.1, and move the code supporting pytorch 0.3.1 \
+to **Non-Local_pytorch_0.3.1/**.
 
 
 ## Running Steps
