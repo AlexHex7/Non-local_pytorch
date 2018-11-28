@@ -1,4 +1,4 @@
-# non-local_pytorch
+# Non-local_pytorch
 - Implementation of [**Non-local Neural Block**](https://arxiv.org/abs/1711.07971).
 
 ## Statement
@@ -33,7 +33,6 @@ old versions (**lib/non_loca.py** and **lib/non_local_simple_version.py**) into
 2. Run **demo_MNIST.py** with one GPU or multi GPU.
     ```
     CUDA_VISIBLE_DEVICES=0,1 python demo_MNIST.py
-
 ## Todo
 - Experiments on Kinetics dataset.
 - Experiments on Charades dataset.
