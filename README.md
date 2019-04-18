@@ -43,7 +43,7 @@ to **Non-Local_pytorch_0.3.1/**.
 
 
 ## Related Repositories
-1. [Non-local ResNet-50 TSM](https://github.com/MIT-HAN-LAB/temporal-shift-module) 
-([Paper](https://arxiv.org/abs/1811.08383)) on Kinetics dataset. They report that their model achieves a good performance 
+1. [**Non-local ResNet-50 TSM**](https://github.com/MIT-HAN-LAB/temporal-shift-module) 
+([**Paper**](https://arxiv.org/abs/1811.08383)) on Kinetics dataset. They report that their model achieves a good performance 
 of **75.6% on Kinetics**, which is even higher than Non-local ResNet-50 I3D 
-([Here](https://github.com/AlexHex7/Non-local_pytorch/issues/23)).
+([**Here**](https://github.com/AlexHex7/Non-local_pytorch/issues/23)).
