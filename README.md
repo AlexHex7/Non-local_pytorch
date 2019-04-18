@@ -12,6 +12,7 @@ in **lib/network.py**.
 - python 3.6
 - pytorch 0.4.1
 
+
 ## Update Records
 1. Figure out how to implement the **concatenation** type, and add the code to **lib/**.
 2. Fix the bug in **lib/non_local.py** (old version) when using multi-gpu. Someone shares the 
@@ -35,7 +36,14 @@ to **Non-Local_pytorch_0.3.1/**.
 2. Run **demo_MNIST.py** with one GPU or multi GPU.
     ```
     CUDA_VISIBLE_DEVICES=0,1 python demo_MNIST.py
+
 ## Todo
-- Experiments on Kinetics dataset.
 - Experiments on Charades dataset.
 - Experiments on COCO dataset.
+
+
+## Related Repositories
+1. [Non-local ResNet-50 TSM](https://github.com/MIT-HAN-LAB/temporal-shift-module) 
+([Paper](https://arxiv.org/abs/1811.08383)) on Kinetics dataset. They report that their model achieves a good performance 
+of **75.6% on Kinetics**, which is even higher than Non-local ResNet-50 I3D 
+([Here](https://github.com/AlexHex7/Non-local_pytorch/issues/23)).
