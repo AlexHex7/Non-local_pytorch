@@ -17,9 +17,11 @@
 
 ## Visualization
 1. In the **first** Non-local Layer.
+
 ![](nl_map_vis/nl_map_1/37.png)![](nl_map_vis/nl_map_1/44.png)![](nl_map_vis/nl_map_1/46.png)![](nl_map_vis/nl_map_1/110.png)![](nl_map_vis/nl_map_1/161.png)
 
 2. In the **second** Non-local Layer.
+
 ![](nl_map_vis/nl_map_2/1.png)![](nl_map_vis/nl_map_2/8.png)![](nl_map_vis/nl_map_2/10.png)![](nl_map_vis/nl_map_2/18.png)![](nl_map_vis/nl_map_2/38.png)
 
 
@@ -41,7 +43,6 @@
 4. Come into **nl_map_vis/** and run **nl_map_vis.py** to visualize the NL_MAP. (tips: if the Non-local type you select is **non_local_concatenation** or **non_local_dot_product** (without Softmax operation), you may need to normalize NL_MAP in the visualize code)
     ```
     python nl_map_save.py
-
 
 ## Update Records
 1. Figure out how to implement the **concatenation** type, and add the code to **lib/**.
