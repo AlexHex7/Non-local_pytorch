@@ -6,10 +6,10 @@ from torch import nn
 import time
 
 
-def calc_acc(x, y):
-    x = torch.max(x, dim=-1)[1]
-    accuracy = sum(x == y) / x.size(0)
-    return accuracy
+# def calc_acc(x, y):
+#     x = torch.max(x, dim=-1)[1]
+#     accuracy = sum(x == y) / x.size(0)
+#     return accuracy
 
 
 train_data = torchvision.datasets.MNIST(root='./mnist', train=True,
@@ -44,7 +44,7 @@ for epoch_index in range(20):
             label_batch = label_batch.cuda()
 
         predict = net(img_batch)
-        acc = calc_acc(predict.cpu().data, label_batch.cpu().data)
+        # acc = calc_acc(predict.cpu().data, label_batch.cpu().data)
         loss = loss_func(predict, label_batch)
 
         net.zero_grad()

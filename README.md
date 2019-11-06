@@ -9,8 +9,8 @@ in **lib/network.py**.
 
 
 ## Environment
-- python 3.6 or python 3.7.3
-- pytorch 0.4.1 or pytorch 1.1.0
+- python 3.7.3
+- pytorch 1.2.0
 
 
 ## Update Records
@@ -25,6 +25,7 @@ old versions (**lib/non_loca.py** and **lib/non_local_simple_version.py**) into
 5. Modify the code to support pytorch 0.4.1, and move the code supporting pytorch 0.3.1 \
 to **Non-Local_pytorch_0.3.1/**.
 6. Test the code with pytorch 1.1.0 and it works.
+7. Move the code supporting pytorch 0.4.1 and 1.1.0 to **Non-Local_pytorch_0.4.1_to_1.1.0/**.
 
 ## Running Steps
 1. Select the type of non-local block in **lib/network.py**.
