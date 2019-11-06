@@ -18,11 +18,11 @@
 ## Visualization
 1. In the **first** Non-local Layer.
 
-![](nl_map_vis/nl_map_1/37.png)![](nl_map_vis/nl_map_1/44.png)![](nl_map_vis/nl_map_1/46.png)![](nl_map_vis/nl_map_1/110.png)![](nl_map_vis/nl_map_1/161.png)
+![](nl_map_vis/nl_map_1/37.png) ![](nl_map_vis/nl_map_1/44.png) ![](nl_map_vis/nl_map_1/46.png) ![](nl_map_vis/nl_map_1/110.png) ![](nl_map_vis/nl_map_1/161.png)
 
 2. In the **second** Non-local Layer.
 
-![](nl_map_vis/nl_map_2/1.png)![](nl_map_vis/nl_map_2/8.png)![](nl_map_vis/nl_map_2/10.png)![](nl_map_vis/nl_map_2/18.png)![](nl_map_vis/nl_map_2/38.png)
+![](nl_map_vis/nl_map_2/1.png) ![](nl_map_vis/nl_map_2/8.png) ![](nl_map_vis/nl_map_2/10.png) ![](nl_map_vis/nl_map_2/18.png) ![](nl_map_vis/nl_map_2/38.png)
 
 
 ## Running Steps
