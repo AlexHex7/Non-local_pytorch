@@ -130,12 +130,12 @@ if __name__ == '__main__':
         print(out.size())
 
         img = torch.zeros(2, 3, 20, 20)
-        net = NONLocalBlock2D(3, sub_sample=sub_sample_, bn_layer=bn_layer_, store_last_batch_nl_map=True)
+        net = NONLocalBlock2D(3, sub_sample=sub_sample_, bn_layer=bn_layer_)
         out = net(img)
         print(out.size())
 
         img = torch.randn(2, 3, 8, 20, 20)
-        net = NONLocalBlock3D(3, sub_sample=sub_sample_, bn_layer=bn_layer_, store_last_batch_nl_map=True)
+        net = NONLocalBlock3D(3, sub_sample=sub_sample_, bn_layer=bn_layer_)
         out = net(img)
         print(out.size())
 

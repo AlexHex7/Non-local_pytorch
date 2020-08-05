@@ -78,8 +78,8 @@ class _NonLocalBlockND(nn.Module):
         f = torch.matmul(theta_x, phi_x)
         f_div_C = F.softmax(f, dim=-1)
 
-        if self.store_last_batch_nl_map:
-            self.nl_map = f_div_C
+        # if self.store_last_batch_nl_map:
+        #     self.nl_map = f_div_C
 
         y = torch.matmul(f_div_C, g_x)
         y = y.permute(0, 2, 1).contiguous()
