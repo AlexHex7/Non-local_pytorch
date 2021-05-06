@@ -12,7 +12,7 @@
 
 ## Environment
 - python 3.7.7
-- pytorch 1.4.0 (>=1.2.0, 1.7.0 works too)
+- pytorch 1.4.0 (>=1.2.0, 1.8.1 works too)
 - opencv 4.2.0.34 (others work too)
 
 ## Visualization
@@ -79,6 +79,8 @@ to **Non-Local_pytorch_0.3.1/**.
 10. The code also works well in **pytorch 1.6.0**. Add **demo_MNIST_AMP_train_with_single_gpu.py** with Automatic Mixed Precision Training (FP16), supported by **pytorch 1.6.0**. It can reduce GPU memory during training. What's more, if you use GPU 2080Ti (tensor cores), training speed can be increased. More details (such as how to train with multiple GPUs) can be found in [here](https://pytorch.org/docs/stable/notes/amp_examples.html#typical-mixed-precision-training)
 
 11. Verify that the code works well in **pytorch 1.7.0**.
+
+12. Verify that the code works well in **pytorch 1.8.1**.
 
 ## Todo
 - Experiments on Charades dataset.
