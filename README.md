@@ -12,7 +12,7 @@
 
 ## Environment
 - python 3.7.7
-- pytorch 1.4.0 (>=1.2.0, 1.8.1 works too)
+- pytorch 1.4.0 (>=1.2.0, 1.8.1, 1.9.0 works too)
 - opencv 4.2.0.34 (others work too)
 
 ## Visualization
@@ -81,6 +81,8 @@ to **Non-Local_pytorch_0.3.1/**.
 11. Verify that the code works well in **pytorch 1.7.0**.
 
 12. Verify that the code works well in **pytorch 1.8.1**.
+
+13. Verify that the code works well in **pytorch 1.9.0**.
 
 ## Todo
 - Experiments on Charades dataset.
