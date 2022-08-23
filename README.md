@@ -90,6 +90,8 @@ to **Non-Local_pytorch_0.3.1/**.
  
 16. Verify that the code works well in **pytorch 1.12.0**.
 
+17. Remove redundant the code `net.train()` in training code files.
+
 ## Todo
 - Experiments on Charades dataset.
 - Experiments on COCO dataset.

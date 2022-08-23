@@ -82,8 +82,6 @@ for epoch_index in range(10):
         total_acc += acc
         total_sample += img_batch.size(0)
 
-    net.train()
-
     mean_acc = total_acc.item() * 1.0 / total_sample
     mean_loss = sum(total_loss) / total_loss.__len__()
 
